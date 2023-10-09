@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  get 'market_lists', to: 'market_lists#index'
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  post 'market_lists', to: 'market_lists#create'
+
+  patch 'market_lists/:id/update_item', to: 'market_lists#update_item'
+
+  delete 'market_lists/:id/delete_item', to: 'market_lists#delete_item'
 end
+
