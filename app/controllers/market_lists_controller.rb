@@ -1,20 +1,25 @@
 class MarketListsController < ApplicationController
     def index
-       @items = ['Item 1', 'Item 2', 'Item 3']
+      @items = MarketList.all
     end   
 
     def create
-        @item = Item.new(params.require(:item).permit(:valor))
+      @item = MarketList.new(name: params[:name])
+      # @item = Item.new(params.require(:item).permit(:valor))
     end
 
     def update_item
-        @item = Item.find(params[:id])
-        @item.update(params.require(:item).permit(:valor))
-      end      
+      @item = Item.find(params[:id])
+      @item.update(params.require(:item).permit(:valor))
+    end      
 
-      def delete_item
-        @item = Item.find(params[:id])
-        @item.destroy
-        head :no_content
-      end
+    def delete_item
+      @item = Item.find(params[:id])
+      @item.destroy
+      head :no_content
     end
+
+    def new
+      @market_list = MarketList.new
+    end
+  end

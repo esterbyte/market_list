@@ -2,6 +2,8 @@
 
 <ul>
   <% @items.each do |item| %>
-    <li><%= item %></li>
+    <li><%= item.name %></li>
   <% end %>
 </ul>
+
+<%= link_to 'Nova lista de Mercado', new_market_list_path %>
