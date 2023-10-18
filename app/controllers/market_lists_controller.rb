@@ -33,7 +33,8 @@ class MarketListsController < ApplicationController
     def destroy
       @market_list = MarketList.find(params[:id])
       @market_list.destroy
-      redirect_to action: :index
+      puts "Lista de mercado excluída com sucesso"
+      redirect_to market_lists_path
     end
 
     def new

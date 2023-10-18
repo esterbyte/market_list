@@ -1,9 +1,12 @@
 <h1>Lista de Compras</h1>
 
 <ul>
-  <% MarketList.all.each do |list| %>
-    <li><%="#{list.name} #{list.market_date}"%> <%= link_to 'Editar', edit_market_list_path(list)%></li>
-  <% end %>
+  <% @market_lists.each do |list| %>
+    <li>
+    <%="#{list.name} #{list.market_date}"%> <%= link_to 'Editar', edit_market_list_path(list)%>
+    <%= link_to 'Excluir', list, method: :delete, class: 'btn btn-danger' %>
+    </li>
+    <% end %>
 </ul>
 
 <%= link_to 'Nova lista de Mercado', new_market_list_path %>
