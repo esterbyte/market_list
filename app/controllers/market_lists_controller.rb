@@ -1,25 +1,46 @@
 class MarketListsController < ApplicationController
     def index
-      @items = MarketList.all
-    end   
+      @market_lists = MarketList.all
+    end 
+    
+    def show
+    @market_list = MarketList.find(params[:id])
+    @market_lists = MarketList.all
+    end  
 
     def create
-      @item = MarketList.new(name: params[:name])
-      # @item = Item.new(params.require(:item).permit(:valor))
+      @market_list = MarketList.new(params.require(:market_list).permit(:name, :market_date))
+  
+      if @market_list.save
+        redirect_to action: :index
+      else
+        render :new
+      end
     end
 
-    def update_item
-      @item = Item.find(params[:id])
-      @item.update(params.require(:item).permit(:valor))
-    end      
+    def update
+      @market_list = MarketList.find(params[:id])
+      @market_list.attributes = params.require(:market_list).permit(:name, :market_date)
+  
+      if @market_list.save
+        flash[:success] = 'Lista editada com Sucesso'
+        redirect_to action: :index
+      else
+        render :edit
+      end
+    end
 
-    def delete_item
-      @item = Item.find(params[:id])
-      @item.destroy
-      head :no_content
+    def destroy
+      @market_list = MarketList.find(params[:id])
+      @market_list.destroy
+      redirect_to action: :index
     end
 
     def new
       @market_list = MarketList.new
+    end
+
+    def edit
+      @market_list = MarketList.find(params[:id])
     end
   end
