@@ -4,7 +4,8 @@
   <% @market_lists.each do |list| %>
     <li>
     <%="#{list.name} #{list.market_date}"%> <%= link_to 'Editar', edit_market_list_path(list)%>
-    <%= link_to 'Excluir', list, method: :delete, class: 'btn btn-danger' %>
+    <%= link_to 'Excluir', list, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: 'btn btn-danger' %>
+    <%= link_to 'Detalhes', list %>
     </li>
     <% end %>
 </ul>

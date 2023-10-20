@@ -5,7 +5,6 @@ class MarketListsController < ApplicationController
     
     def show
     @market_list = MarketList.find(params[:id])
-    @market_lists = MarketList.all
     end  
 
     def create
@@ -33,7 +32,6 @@ class MarketListsController < ApplicationController
     def destroy
       @market_list = MarketList.find(params[:id])
       @market_list.destroy
-      puts "Lista de mercado excluída com sucesso"
       redirect_to market_lists_path
     end
 
