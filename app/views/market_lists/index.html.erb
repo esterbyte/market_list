@@ -1,9 +1,14 @@
 <h1>Lista de Compras</h1>
 
 <ul>
-  <% @items.each do |item| %>
-    <li><%= item.name %></li>
-  <% end %>
+  <% @market_lists.each do |list| %>
+    <li>
+    <%="#{list.name} #{list.market_date}"%> <%= link_to 'Editar', edit_market_list_path(list)%>
+    <%= link_to 'Excluir', list, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: 'btn btn-danger' %>
+    <%= link_to 'Detalhes', list %>
+    </li>
+    <% end %>
 </ul>
 
 <%= link_to 'Nova lista de Mercado', new_market_list_path %>
+
