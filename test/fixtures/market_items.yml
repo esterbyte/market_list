@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  date: 2023-10-24
+  market_list: one
+
+two:
+  name: MyString
+  date: 2023-10-24
+  market_list: two

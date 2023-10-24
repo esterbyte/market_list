@@ -1,10 +1,15 @@
 class MarketItemsController < ApplicationController
+
     def new
-        # lógica para 'new'
+      @market_list = MarketList.find(params[:market_list_id])
+      @market_item = MarketItem.new
     end
     
     def create
-        # lógica para 'create'
+      @market_list = MarketList.find(params[:market_list_id])
+      @market_item = @market_list.market_items.create(market_item_params)
+
+      redirect_to @market_list
     end
     
     def edit
