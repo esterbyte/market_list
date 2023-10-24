@@ -23,4 +23,10 @@ class MarketItemsController < ApplicationController
     def destroy
         # lógica para 'destroy'
     end
+
+    private
+
+  def market_item_params
+    params.require(:market_item).permit(:name, :date)
+  end
 end

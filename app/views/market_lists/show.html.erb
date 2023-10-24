@@ -2,5 +2,7 @@
 <p><strong>Data de Criação:</strong> <%= @market_list.created_at.strftime("%d/%m/%Y") %></p>
 
 <%= link_to 'Voltar para a Lista', market_lists_path, class: 'btn btn-primary' %>
+<%= link_to 'Novo Item de Mercado', new_market_list_market_item_path(@market_list) %>
+
 
 
