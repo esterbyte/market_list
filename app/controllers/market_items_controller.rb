@@ -7,7 +7,9 @@ class MarketItemsController < ApplicationController
     
     def create
       @market_list = MarketList.find(params[:market_list_id])
-      @market_item = @market_list.market_items.create(market_item_params)
+      @market_item = @market_list.market_items.new(market_item_params)
+      @market_item.quantidade = params[:market_item][:quantidade]
+      @market_item.save
 
       redirect_to @market_list
     end
@@ -22,6 +24,11 @@ class MarketItemsController < ApplicationController
     
     def destroy
         # lógica para 'destroy'
+    end
+
+    def show
+      @market_list = MarketList.find(params[:market_list_id])
+      @market_item = @market_list.market_items.find(params[:id])
     end
 
     private
