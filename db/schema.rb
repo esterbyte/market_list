@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_09_212117) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_25_190813) do
+  create_table "market_items", force: :cascade do |t|
+    t.string "name"
+    t.date "date"
+    t.integer "market_list_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "quantidade"
+    t.index ["market_list_id"], name: "index_market_items_on_market_list_id"
+  end
+
   create_table "market_lists", force: :cascade do |t|
     t.string "name"
     t.date "market_date", null: false
@@ -18,4 +28,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_09_212117) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "market_items", "market_lists"
 end
