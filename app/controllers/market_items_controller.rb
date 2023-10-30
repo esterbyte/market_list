@@ -8,15 +8,12 @@ class MarketItemsController < ApplicationController
     def create
       @market_list = MarketList.find(params[:market_list_id])
       @market_item = @market_list.market_items.new(market_item_params)
-      redirect_to @market_list
-    end
-    
-    def edit
-        # lógica para 'edit'
-    end
-    
-    def update
-        # lógica para 'update'
+
+      if @market_item.save
+        redirect_to @market_list
+      else
+        render :new
+      end
     end
     
     def destroy
@@ -33,6 +30,6 @@ class MarketItemsController < ApplicationController
     private
 
   def market_item_params
-    params.require(:market_item).permit(:name, :date)
+    params.require(:market_item).permit(:name, :quantidade)
   end
 end
