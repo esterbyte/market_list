@@ -20,7 +20,9 @@ class MarketItemsController < ApplicationController
     end
     
     def destroy
-        # lógica para 'destroy'
+      @market_item = MarketItem.find(params[:id])
+      @market_item.destroy
+      redirect_to @market_item.market_list
     end
 
     def show
