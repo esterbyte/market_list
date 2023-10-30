@@ -5,9 +5,7 @@
 <ul>
   <% @market_list.market_items.each do |item| %>
     <li>
-      <strong>Nome do Item:</strong> <%= item.name %>
-      <br>
-      <strong>Quantidade de Itens:</strong> <%= item.quantidade %>
+      <strong><%= item.quantidade %>x <%= item.name %></strong>
       <%= link_to 'Excluir', market_list_market_item_path(@market_list, item), method: :delete, data: { turbo_method: :delete, turbo_confirm: 'Tem certeza de que deseja excluir este item?' }, class: 'btn btn-danger' %>
     </li>
   <% end %>

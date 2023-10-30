@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   resources :market_lists do
-    resources :market_items
+    resources :market_items, except: [:update, :edit, :index]
   end
 
   root to: 'market_lists#index'
