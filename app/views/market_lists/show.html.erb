@@ -1,6 +1,18 @@
 <h1><%= @market_list.name %></h1>
 <p><strong>Data de Criação:</strong> <%= @market_list.created_at.strftime("%d/%m/%Y") %></p>
 
+<% if flash[:success] %>
+  <div class="success-message">
+    <%= flash[:success] %>
+  </div>
+<% end %>
+
+<% if flash[:error] %>
+  <div class="error-message">
+    <%= flash[:error] %>
+  </div>
+<% end %>
+
 <h2>Itens da Lista:</h2>
 <ul>
   <% @market_list.market_items.each do |item| %>
