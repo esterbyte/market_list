@@ -10,8 +10,10 @@ class MarketItemsController < ApplicationController
       @market_item = @market_list.market_items.new(market_item_params)
 
       if @market_item.save
+        flash[:success] = 'Item de mercado criado com sucesso.'
         redirect_to @market_list
       else
+        flash[:error] = 'Erro ao criar o item de mercado.'
         render :new
       end
     end
@@ -19,6 +21,7 @@ class MarketItemsController < ApplicationController
     def destroy
       @market_item = MarketItem.find(params[:id])
       @market_item.destroy
+      flash[:success] = 'Item de mercado excluído com sucesso.'
       redirect_to @market_item.market_list
     end
 

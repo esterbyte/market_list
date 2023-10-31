@@ -1,11 +1,19 @@
-<!-- app/views/market_items/show.html.erb -->
 <h1>Detalhes do Item de Mercado</h1>
 
-<p><strong>Nome:</strong> <%= @market_item.name %></p>
-<p><strong>Data:</strong> <%= @market_item.date %></p>
-
-
-
-
-
-<%= link_to 'Voltar para a Lista de Mercado', market_list_path(@market_list) %>
+    <% if flash[:success] %>
+      <div class="success-message">
+        <%= flash[:success] %>
+      </div>
+    <% end %>
+    
+    <% if flash[:error] %>
+      <div class="error-message">
+        <%= flash[:error] %>
+      </div>
+    <% end %>
+    
+    <p><strong>Nome:</strong> <%= @market_item.name %></p>
+    <p><strong>Data:</strong> <%= @market_item.date %></p>
+    
+    <%= link_to 'Voltar para a Lista de Mercado', market_list_path(@market_list) %>
+    

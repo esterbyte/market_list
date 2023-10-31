@@ -11,8 +11,10 @@ class MarketListsController < ApplicationController
       @market_list = MarketList.new(params.require(:market_list).permit(:name, :market_date))
   
       if @market_list.save
+        flash[:success] = 'Lista criada com sucesso'
         redirect_to action: :index
       else
+        flash[:error] = 'Erro ao criar a lista'
         render :new
       end
     end
@@ -25,6 +27,7 @@ class MarketListsController < ApplicationController
         flash[:success] = 'Lista editada com Sucesso'
         redirect_to action: :index
       else
+        flash[:error] = 'Erro ao editar a lista'
         render :edit
       end
     end
