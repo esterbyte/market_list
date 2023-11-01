@@ -1,5 +1,4 @@
 class MarketListsController < ApplicationController
-  
   def index
     @market_lists = MarketList.all
   end 
@@ -9,27 +8,27 @@ class MarketListsController < ApplicationController
   end  
 
   def create
-    @market_list = MarketList.new(params.require(:market_list).permit(:name, :market_date))
+    @market_list = MarketList.new(market_list_params)
 
     if @market_list.save
       flash[:success] = 'Lista criada com sucesso'
+      redirect_to action: :index
     else
       flash[:error] = 'Erro ao criar a lista'
+      render :new
     end
-    redirect_to action: :index
   end
 
   def update
     @market_list = MarketList.find(params[:id])
-    @market_list.attributes = params.require(:market_list).permit(:name, :market_date)
 
-    if @market_list.save
-      flash[:success] = 'Lista editada com Sucesso'
+    if @market_list.update(market_list_params)
+      flash[:success] = 'Lista editada com sucesso'
+      redirect_to action: :index
     else
       flash[:error] = 'Erro ao editar a lista'
       render :edit
     end
-    redirect_to action: :index
   end
 
   def destroy
@@ -42,7 +41,6 @@ class MarketListsController < ApplicationController
     end
     redirect_to market_lists_path
   end
-  
 
   def new
     @market_list = MarketList.new
@@ -50,5 +48,11 @@ class MarketListsController < ApplicationController
 
   def edit
     @market_list = MarketList.find(params[:id])
+  end
+
+  private
+
+  def market_list_params
+    params.require(:market_list).permit(:name, :market_date)
   end
 end
