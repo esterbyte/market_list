@@ -1,11 +1,11 @@
 class MarketItemsController < ApplicationController
+  before_action :set_market_list, only: [:new, :create, :show, :destroy]
+ 
   def new
-    @market_list = MarketList.find(params[:market_list_id])
     @market_item = MarketItem.new
   end
   
   def create
-    @market_list = MarketList.find(params[:market_list_id])
     @market_item = @market_list.market_items.new(market_item_params)
 
     if @market_item.save
@@ -18,8 +18,7 @@ class MarketItemsController < ApplicationController
   end
   
   def destroy
-    @market_item = MarketItem.find(params[:id])
-    
+    @market_item = @market_list.market_items.find(params[:id])
     if @market_item.destroy
       flash[:success] = 'Item de mercado excluído com sucesso.'
     else
@@ -30,11 +29,14 @@ class MarketItemsController < ApplicationController
   end
 
   def show
-    @market_list = MarketList.find(params[:market_list_id])
     @market_item = @market_list.market_items.find(params[:id])
   end
 
   private
+
+  def set_market_list
+    @market_list = MarketList.find(params[:market_list_id])
+  end
 
   def market_item_params
     params.require(:market_item).permit(:name, :quantidade)
