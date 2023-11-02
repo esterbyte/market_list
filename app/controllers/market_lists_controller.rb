@@ -1,6 +1,6 @@
 class MarketListsController < ApplicationController
   def index
-    @market_lists = MarketList.all
+    @market_lists = MarketList.order(market_date: :desc)
   end 
   
   def show
