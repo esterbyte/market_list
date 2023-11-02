@@ -1,10 +1,12 @@
 class MarketListsController < ApplicationController
+  before_action :set_market_list, only: [:show, :edit, :update, :destroy]
+
   def index
     @market_lists = MarketList.order(market_date: :desc)
   end 
   
   def show
-    @market_list = MarketList.find(params[:id])
+    # Já configurado no before_action set_market_list
   end  
 
   def create
@@ -20,8 +22,6 @@ class MarketListsController < ApplicationController
   end
 
   def update
-    @market_list = MarketList.find(params[:id])
-
     if @market_list.update(market_list_params)
       flash[:success] = 'Lista editada com sucesso'
       redirect_to action: :index
@@ -32,8 +32,6 @@ class MarketListsController < ApplicationController
   end
 
   def destroy
-    @market_list = MarketList.find(params[:id])
-    
     if @market_list.destroy
       flash[:success] = 'Lista de mercado excluída com sucesso.'
     else
@@ -47,10 +45,14 @@ class MarketListsController < ApplicationController
   end
 
   def edit
-    @market_list = MarketList.find(params[:id])
+    # Já configurado no before_action set_market_list
   end
 
   private
+
+  def set_market_list
+    @market_list = MarketList.find(params[:id])
+  end
 
   def market_list_params
     params.require(:market_list).permit(:name, :market_date)
