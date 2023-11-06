@@ -1,5 +1,6 @@
 class MarketItemsController < ApplicationController
   before_action :set_market_list, only: [:new, :create, :show, :destroy]
+  before_action :set_market_item, only: [:show, :destroy]
  
   def new
     @market_item = MarketItem.new
@@ -18,7 +19,6 @@ class MarketItemsController < ApplicationController
   end
   
   def destroy
-    @market_item = @market_list.market_items.find(params[:id])
     if @market_item.destroy
       flash[:success] = 'Item de mercado excluído com sucesso.'
     else
@@ -29,13 +29,17 @@ class MarketItemsController < ApplicationController
   end
 
   def show
-    @market_item = @market_list.market_items.find(params[:id])
+    # Já configurado no before_action set_market_item
   end
 
   private
 
   def set_market_list
     @market_list = MarketList.find(params[:market_list_id])
+  end
+
+  def set_market_item
+    @market_item = @market_list.market_items.find(params[:id])
   end
 
   def market_item_params
