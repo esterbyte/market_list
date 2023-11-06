@@ -1,5 +1,5 @@
 class MarketItemsController < ApplicationController
-  before_action :set_market_item, only: [:new, :create, :show, :destroy]
+  before_action :set_market_list, only: [:new, :create, :show, :destroy]
  
   def new
     @market_item = MarketItem.new
@@ -34,7 +34,7 @@ class MarketItemsController < ApplicationController
 
   private
 
-  def set_market_item
+  def set_market_list
     @market_list = MarketList.find(params[:market_list_id])
   end
 
