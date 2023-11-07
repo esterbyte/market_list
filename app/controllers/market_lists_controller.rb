@@ -13,7 +13,7 @@ class MarketListsController < ApplicationController
     @market_list = MarketList.new(market_list_params)
 
     if @market_list.save
-      flash[:success] = 'Lista criada com sucesso'
+      flash[:success] = "Lista '#{@market_list.name}' criada com sucesso"
       redirect_to action: :index
     else
       flash[:error] = 'Erro ao criar a lista'
@@ -23,7 +23,7 @@ class MarketListsController < ApplicationController
 
   def update
     if @market_list.update(market_list_params)
-      flash[:success] = 'Lista editada com sucesso'
+      flash[:success] = "Lista '#{@market_list.name}' editada com sucesso"
       redirect_to action: :index
     else
       flash[:error] = 'Erro ao editar a lista'
@@ -33,7 +33,7 @@ class MarketListsController < ApplicationController
 
   def destroy
     if @market_list.destroy
-      flash[:success] = 'Lista de mercado excluída com sucesso.'
+      flash[:success] = "Lista '#{@market_list.name}' excluída com sucesso."
     else
       flash[:error] = 'Erro ao excluir a lista de mercado.'
     end
