@@ -16,7 +16,7 @@ class MarketListsController < ApplicationController
       flash[:success] = "Lista '#{@market_list.name}' criada com sucesso"
       redirect_to action: :index
     else
-      flash[:error] = @market_list.errors.full_messages.join(', ')
+      set_flash_error
       render :new
     end
   end
@@ -26,7 +26,7 @@ class MarketListsController < ApplicationController
       flash[:success] = "Lista '#{@market_list.name}' editada com sucesso"
       redirect_to action: :index
     else
-      flash[:error] = @market_list.errors.full_messages.join(', ')
+      set_flash_error
       render :edit
     end
   end
@@ -35,10 +35,8 @@ class MarketListsController < ApplicationController
     if @market_list.destroy
       flash[:success] = "Lista '#{@market_list.name}' excluída com sucesso."
     else
-      flash[:error] = @market_list.errors.full_messages.join(', ')
-      render :new
-    end
-    redirect_to market_lists_path
+      set_flash_error
+      redirect_to market_lists_path
   end
 
   def new
@@ -57,5 +55,9 @@ class MarketListsController < ApplicationController
 
   def market_list_params
     params.require(:market_list).permit(:name, :market_date)
+  end
+
+  def set_flash_error
+    flash[:error] = @market_list.errors.full_messages.join(', ')
   end
 end
