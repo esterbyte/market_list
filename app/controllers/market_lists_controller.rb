@@ -37,6 +37,7 @@ class MarketListsController < ApplicationController
     else
       set_flash_error
       redirect_to market_lists_path
+    end
   end
 
   def new
