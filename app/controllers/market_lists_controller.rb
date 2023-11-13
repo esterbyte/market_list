@@ -27,7 +27,7 @@ class MarketListsController < ApplicationController
       redirect_to action: :index
     else
       set_flash_error
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 
@@ -59,6 +59,6 @@ class MarketListsController < ApplicationController
   end
 
   def set_flash_error
-    flash[:error] = @market_list.errors.full_messages.join(', ')
+    flash[:danger] = @market_list.errors.full_messages.join(', ')
   end
 end

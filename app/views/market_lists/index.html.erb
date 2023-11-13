@@ -1,17 +1,5 @@
 <h1>Lista de Compras</h1>
 
-<% if flash[:success] %>
-  <div class="success-message">
-    <%= flash[:success] %>
-  </div>
-<% end %>
-
-<% if flash[:error] %>
-  <div class="error-message">
-    <%= flash[:error] %>
-  </div>
-<% end %>
-
 <ul>
   <% @market_lists.each do |list| %>
     <li>
