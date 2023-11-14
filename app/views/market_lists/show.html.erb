@@ -6,10 +6,10 @@
   <% @market_list.market_items.each do |item| %>
     <li>
       <strong><%= item.quantidade %>x <%= item.name %></strong>
-      <%= link_to 'Excluir', market_list_market_item_path(@market_list, item), method: :delete, data: { turbo_method: :delete, turbo_confirm: 'Tem certeza de que deseja excluir este item?' }, class: 'btn btn-danger' %>
+      <%= link_to 'Excluir', market_list_market_item_path(@market_list, item), method: :delete, data: { turbo_method: :delete, turbo_confirm: 'Tem certeza de que deseja excluir este item?' }, class: 'btn btn-secondary' %>
     </li>
   <% end %>
 </ul>
 
 <%= link_to 'Voltar para a Lista', market_lists_path, class: 'btn btn-primary' %>
-<%= link_to 'Novo Item de Mercado', new_market_list_market_item_path(@market_list) %>
+<%= link_to 'Novo Item de Mercado', new_market_list_market_item_path(@market_list), class: 'btn btn-primary' %>
