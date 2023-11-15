@@ -1,17 +1,10 @@
 // Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
-import "@hotwired/turbo-rails"
-import "controllers"
 
-document.addEventListener("turbo:load", function () {
-  // Fechar a notificação quando o botão de "dismiss" for clicado
-  const closeButton = document.querySelector(".alert-dismissible .close");
-  if (closeButton) {
+document.addEventListener("DOMContentLoaded", function () {
+    var closeButton = document.querySelector(".alert .btn-close");
     closeButton.addEventListener("click", function () {
-      const alert = this.closest(".alert-dismissible");
-      if (alert) {
-        alert.remove();
-      }
+      var alertDiv = this.closest(".alert");
+      alertDiv.classList.add("d-none"); // Or you can use alertDiv.style.display = 'none'; to hide the alert
     });
-  }
-});
+  });
 
