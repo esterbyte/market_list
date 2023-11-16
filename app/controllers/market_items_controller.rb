@@ -12,7 +12,8 @@ class MarketItemsController < ApplicationController
     if @market_item.save
       flash[:success] = "Item '#{@market_item.name}' criado com sucesso."
     else
-      flash[:error] = 'Erro ao criar o item de mercado.'
+      flash[:error] = market_item_errors
+      render :new
     end
 
     redirect_to @market_list
@@ -22,7 +23,7 @@ class MarketItemsController < ApplicationController
     if @market_item.destroy
       flash[:success] = "Item '#{@market_item.name}' excluído com sucesso."
     else
-      flash[:error] = 'Erro ao excluir o item de mercado.'
+      flash[:error] = failed_destroy_message
     end
     
     redirect_to @market_item.market_list
@@ -34,6 +35,10 @@ class MarketItemsController < ApplicationController
 
   private
 
+  def failed_destroy_message
+    "Erro ao excluir o item de mercado: #{market_item_errors}"
+  end
+
   def set_market_list
     @market_list = MarketList.find(params[:market_list_id])
   end
@@ -44,6 +49,10 @@ class MarketItemsController < ApplicationController
 
   def market_item_params
     params.require(:market_item).permit(:name, :quantidade)
+  end
+
+  def market_item_errors
+    @market_item.errors.full_messages.join(', ')
   end
 end
 
