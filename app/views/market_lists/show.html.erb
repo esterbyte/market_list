@@ -2,11 +2,11 @@
 <p><strong>Data de Criação:</strong> <%= @market_list.created_at.strftime("%d/%m/%Y") %></p>
 
 <h2>Itens da Lista:</h2>
-<ul>
+<ul class="list-unstyled">
   <% @market_list.market_items.each do |item| %>
-    <li>
+    <li class="d-flex align-items-center mb-2">
       <strong><%= item.quantidade %>x <%= item.name %></strong>
-      <%= link_to 'Excluir', market_list_market_item_path(@market_list, item), method: :delete, data: { turbo_method: :delete, turbo_confirm: 'Tem certeza de que deseja excluir este item?' }, class: 'btn btn-secondary' %>
+      <%= button_to 'Excluir', market_list_market_item_path(@market_list, item), method: :delete, data: { turbo_confirm: 'Tem certeza de que deseja excluir este item?' }, class: 'btn btn-danger mr-2' %>
     </li>
   <% end %>
 </ul>
