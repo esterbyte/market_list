@@ -1,19 +1,18 @@
-<h1>Lista de Compras</h1>
+<h1 class="mb-4">Lista de Compras</h1>
 
-<ul class="list-unstyled">
+<ul class="list-group">
   <% @market_lists.each do |list| %>
-    <li class="d-flex align-items-center mb-2">
-      <span class="mr-2">
+    <li class="list-group-item d-flex justify-content-between align-items-center mb-2">
+      <span>
         <%= "#{list.name} #{list.market_date}" %>
       </span>
-      <%= button_to 'Editar', edit_market_list_path(list), method: :get, form: { action: edit_market_list_path(list), method: :get }, class: 'btn btn-secondary' %>
-      <%= button_to 'Excluir', list, method: :delete, data: { turbo_confirm: 'Tem certeza de que deseja excluir este item?' }, class: 'btn btn-danger mr-2' %>
-      <%= button_to 'Ver Itens', market_list_path(list), method: :get, class: 'btn btn-secondary' %>
+      <div class="d-flex">
+        <%= button_to 'Editar', edit_market_list_path(list), method: :get, form: { action: edit_market_list_path(list), method: :get }, class: 'btn btn-secondary', style: 'margin-right: 5px;' %>
+        <%= button_to 'Excluir', list, method: :delete, data: { turbo_confirm: 'Tem certeza de que deseja excluir este item?' }, class: 'btn btn-danger', style: 'margin-right: 5px;' %>
+        <%= button_to 'Ver Itens', market_list_path(list), method: :get, class: 'btn btn-secondary' %>
+      </div>
     </li>
   <% end %>
 </ul>
 
-
-<%= link_to 'Nova lista de Mercado', new_market_list_path %>
-
-
+<%= button_to 'Nova lista de Mercado', new_market_list_path, class: 'btn btn-primary' %>
