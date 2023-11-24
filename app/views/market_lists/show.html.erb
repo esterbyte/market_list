@@ -1,15 +1,18 @@
-<h1><%= @market_list.name %></h1>
+<h1 class="mb-4"><%= @market_list.name %></h1>
+
 <p><strong>Data de Criação:</strong> <%= @market_list.created_at.strftime("%d/%m/%Y") %></p>
 
-<h2>Itens da Lista:</h2>
-<ul class="list-unstyled">
+<h2 class="mt-4">Itens da Lista:</h2>
+
+<ul class="list-group">
   <% @market_list.market_items.each do |item| %>
-    <li class="d-flex align-items-center mb-2">
-      <strong><%= item.quantidade %>x <%= item.name %></strong>
-      <%= button_to 'Excluir', market_list_market_item_path(@market_list, item), method: :delete, data: { turbo_confirm: 'Tem certeza de que deseja excluir este item?' }, class: 'btn btn-danger mr-2' %>
+    <li class="list-group-item d-flex justify-content-between align-items-center mb-2">
+      <span><strong><%= item.quantidade %>x <%= item.name %></strong></span>
+      <%= button_to 'Excluir', market_list_market_item_path(@market_list, item), method: :delete, data: { turbo_confirm: 'Tem certeza de que deseja excluir este item?' }, class: 'btn btn-danger' %>
     </li>
   <% end %>
 </ul>
 
-<%= link_to 'Voltar para a Lista', market_lists_path, class: 'btn btn-primary' %>
-<%= link_to 'Novo Item de Mercado', new_market_list_market_item_path(@market_list), class: 'btn btn-primary' %>
+<%= link_to 'Voltar para a Lista', market_lists_path, class: 'btn btn-primary mt-4' %>
+<%= link_to 'Novo Item de Mercado', new_market_list_market_item_path(@market_list), class: 'btn btn-primary mt-4' %>
+
