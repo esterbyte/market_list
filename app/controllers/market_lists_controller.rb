@@ -36,8 +36,8 @@ class MarketListsController < ApplicationController
       flash[:success] = "Lista '#{@market_list.name}' excluída com sucesso."
     else
       set_flash_error
-      redirect_to market_lists_path
     end
+    redirect_to market_lists_path
   end
 
   def new
