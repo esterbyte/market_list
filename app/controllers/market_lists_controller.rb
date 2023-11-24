@@ -24,7 +24,7 @@ class MarketListsController < ApplicationController
   def update
     if @market_list.update(market_list_params)
       flash[:success] = "Lista '#{@market_list.name}' editada com sucesso"
-      redirect_to action: :index
+      redirect_to @market_list
     else
       set_flash_error
       render :edit, status: :unprocessable_entity
@@ -36,8 +36,8 @@ class MarketListsController < ApplicationController
       flash[:success] = "Lista '#{@market_list.name}' excluída com sucesso."
     else
       set_flash_error
-      redirect_to market_lists_path
     end
+    redirect_to market_lists_path
   end
 
   def new

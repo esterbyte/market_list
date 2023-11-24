@@ -6,9 +6,9 @@
       <span class="mr-2">
         <%= "#{list.name} #{list.market_date}" %>
       </span>
-      <%= button_to 'Editar', edit_market_list_path(list), class: 'btn btn-secondary mr-2' %>
+      <%= button_to 'Editar', edit_market_list_path(list), method: :get, form: { action: edit_market_list_path(list), method: :get }, class: 'btn btn-secondary' %>
       <%= button_to 'Excluir', list, method: :delete, data: { turbo_confirm: 'Tem certeza de que deseja excluir este item?' }, class: 'btn btn-danger mr-2' %>
-      <%= button_to 'Ver itens', list, class: 'btn btn-secondary' %>
+      <%= button_to 'Ver Itens', market_list_path(list), method: :get, class: 'btn btn-secondary' %>
     </li>
   <% end %>
 </ul>
