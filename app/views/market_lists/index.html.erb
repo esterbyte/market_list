@@ -1,10 +1,10 @@
-<h1 class="mb-4">Lista de Compras</h1>
+<h1 class="mb-4 mt-4 text-center">Lista de Compras</h1>
 
 <ul class="list-group">
   <% @market_lists.each do |list| %>
     <li class="list-group-item d-flex justify-content-between align-items-center mb-2">
       <span>
-        <%= "#{list.name} #{list.market_date}" %>
+        <%= "#{list.name}" %>
       </span>
       <div class="d-flex">
         <%= button_to 'Editar', edit_market_list_path(list), method: :get, form: { action: edit_market_list_path(list), method: :get }, class: 'btn btn-secondary', style: 'margin-right: 5px;' %>
@@ -15,5 +15,5 @@
   <% end %>
 </ul>
 
-<%= button_to 'Nova lista de Mercado', new_market_list_path, method: :get, class: 'btn btn-primary' %>
+<%= button_to 'Nova lista de Mercado', new_market_list_path, method: :get, class: 'btn btn-primary', style: 'margin-left: 10px;' %>
 
