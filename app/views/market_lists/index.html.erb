@@ -7,13 +7,22 @@
         <%= "#{list.name}" %>
       </span>
       <div class="d-flex">
-        <%= button_to 'Editar', edit_market_list_path(list), method: :get, form: { action: edit_market_list_path(list), method: :get }, class: 'btn btn-secondary', style: 'margin-right: 5px;' %>
-        <%= button_to 'Excluir', list, method: :delete, data: { turbo_confirm: 'Tem certeza de que deseja excluir este item?' }, class: 'btn btn-danger', style: 'margin-right: 5px;' %>
-        <%= button_to 'Ver Itens', market_list_path(list), method: :get, class: 'btn btn-secondary' %>
+        <%= link_to edit_market_list_path(list), class: 'btn btn-secondary', style: 'margin-right: 5px;' do %>
+          <i class="bi bi-pencil"></i> Editar
+        <% end %>
+
+        <%= link_to list, method: :delete, data: { turbo_confirm: 'Tem certeza de que deseja excluir este item?' }, class: 'btn btn-danger', style: 'margin-right: 5px;' do %>
+          <i class="bi bi-trash"></i> Excluir
+        <% end %>
+
+        <%= link_to market_list_path(list), class: 'btn btn-secondary' do %>
+          <i class="bi bi-eye"></i> Ver Itens
+        <% end %>
       </div>
     </li>
   <% end %>
 </ul>
 
-<%= button_to 'Nova lista de Mercado', new_market_list_path, method: :get, class: 'btn btn-primary', style: 'margin-left: 10px;' %>
-
+<%= link_to new_market_list_path, class: 'btn btn-primary', style: 'margin-left: 10px;' do %>
+  <i class="bi bi-plus"></i> Nova lista de Mercado
+<% end %>
