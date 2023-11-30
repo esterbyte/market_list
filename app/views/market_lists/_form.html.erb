@@ -1,17 +1,18 @@
 <div class="container">
   <%= form_for @market_list, html: { class: 'form mx-auto' } do |f| %>
     <div class="mb-3">
-      <%= f.label :nome, class: 'form-label' %>
+      <%= f.label :nome, class: 'form-label text-left' %>
       <%= f.text_field :name, class: 'form-control' %>
     </div>
 
     <div class="mb-3">
-      <%= f.label :data, class: 'form-label' %>
+      <%= f.label :data, class: 'form-label text-left' %>
       <%= f.date_field :market_date, class: 'form-control' %>
     </div>
 
     <%= f.submit 'Salvar', class: 'btn btn-primary' %>
   <% end %>
 </div>
+
 
 
