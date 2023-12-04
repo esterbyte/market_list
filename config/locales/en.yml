@@ -34,3 +34,5 @@ en:
     attributes:
      market_list:
       name: ""
+     market_item:
+      name: ""
