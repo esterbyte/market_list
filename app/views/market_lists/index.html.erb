@@ -7,11 +7,15 @@
         <%= "#{list.name}" %>
       </span>
       <div class="d-flex">
-        <%= button_to edit_market_list_path(list), method: :get, class: 'btn btn-secondary', style: 'margin-right: 5px;' do %>
-        Editar <i class="bi bi-pencil"></i>
-      <% end %>
-        <%= button_to 'Excluir', list, method: :delete, data: { turbo_confirm: 'Tem certeza de que deseja excluir este item?' }, class: 'btn btn-danger', style: 'margin-right: 5px;' %>
-        <%= button_to 'Ver Itens', market_list_path(list), method: :get, class: 'btn btn-secondary' %>
+        <%= button_to edit_market_list_path(list), method: :get, class: 'btn btn-secondary', style: 'margin-right: 5px;' do %> 
+          <i class="bi bi-pencil"></i>
+        <% end %>
+        <%= button_to list, method: :delete, data: { turbo_confirm: 'Tem certeza de que deseja excluir este item?' }, class: 'btn btn-danger', style: 'margin-right: 5px;' do %>
+          <i class="bi bi-trash"></i> 
+        <% end %>
+        <%= button_to({ action: 'show', id: list.id }, method: :get, class: 'btn btn-secondary') do %>
+          <i class="bi bi-eye"></i>
+        <% end %>
       </div>
     </li>
   <% end %>
