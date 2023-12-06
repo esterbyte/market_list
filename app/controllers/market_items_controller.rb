@@ -13,7 +13,7 @@ class MarketItemsController < ApplicationController
       flash[:success] = "Item '#{@market_item.name}' criado com sucesso."
       redirect_to @market_list
     else
-      flash[:error] = market_item_errors
+      flash[:danger] = market_item_errors
       render :new
     end
   end
@@ -23,7 +23,7 @@ class MarketItemsController < ApplicationController
     if @market_item.destroy
       flash[:success] = "Item '#{@market_item.name}' excluído com sucesso."
     else
-      flash[:error] = failed_destroy_message
+      flash[:danger] = failed_destroy_message
     end
     
     redirect_to @market_item.market_list
