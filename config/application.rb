@@ -14,6 +14,8 @@ module SimpleMarketList
     # Desativa a geração automática de divs com a classe "field_with_errors"
     config.action_view.field_error_proc = Proc.new { |html_tag, instance| html_tag.html_safe }
 
+    config.assets.enabled = true
+
     
     # Configuration for the application, engines, and railties goes here.
     #
