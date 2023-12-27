@@ -1,12 +1,12 @@
 require 'rails_helper'
  
 RSpec.describe MarketList, type: :model do
-  it "e valido com os atributos corretos" do
+  it "valid with the correct attributes" do
     market_list = MarketList.new(name: "Example List", market_date: Date.today)
     expect(market_list).to be_valid
   end
  
-  it "nao e valido se tiver um nome menor de 5 caracteres" do
+  it "not valid if it has a name shorter than 5 characters" do
     market_list = MarketList.new(name: "abcd", market_date: Date.today)
     expect(market_list).to_not be_valid
   end 
