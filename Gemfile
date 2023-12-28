@@ -29,6 +29,11 @@ gem "jbuilder"
 
 gem "bootstrap", "~> 5.1.1"
 
+group :development, :test do
+  gem "rspec-rails"
+  gem 'rails-controller-testing'
+end
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 

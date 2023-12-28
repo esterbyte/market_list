@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>SimpleMarketList</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -13,17 +14,21 @@
 </head>
 
 <body>
-  <div class="notifications">
-    <% flash.each do |type, message| %>
-      <div class="alert alert-<%= type %> alert-dismissible fade show" role="alert">
-        <%= message %>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      </div>
-    <% end %>
-  </div>
+  <div data-turbo-frame>
+    <div class="notifications">
+      <% flash.each do |type, message| %>
+        <div class="alert alert-<%= type %> alert-dismissible fade show" role="alert">
+          <%= message %>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      <% end %>
+    </div>
 
-  <div class="container">
-    <%= yield %>
+    <div class="container">
+      <%= yield %>
+    </div>
   </div>
 </body>
+
 </html>
+
